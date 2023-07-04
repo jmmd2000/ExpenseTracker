@@ -38,7 +38,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
       {menuItems.map((item) => (
         <li
           key={item.name}
-          className={`flex items-center justify-start gap-4 space-x-2 p-4 rounded-lg text-white  transition-all duration-300 ease-in-out ${
+          className={`flex items-center justify-start gap-4 space-x-2 p-4 rounded-lg text-white transition-all duration-300 ease-in-out ${
             isOpen ? "hover:bg-slate-600 hover:cursor-pointer" : ""
           }`}
         >

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root";
 
 import "./App.css";
+import HomePage from "./pages/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +10,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     // errorElement: <ErrorCard />,
     children: [
-      // { index: true, element: <HomePage /> },
+      { index: true, element: <HomePage /> },
       // {
       //   path: "albums",
       //   element: <AlbumsRootLayout />,

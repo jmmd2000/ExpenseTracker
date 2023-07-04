@@ -10,12 +10,12 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleOpen }) => {
   return (
     <div
-      className={` top-0 left-0 w-[300px] h-screen bg-slate-700 p-3 transition-transform duration-300 ease-in-out transform ${
+      className={`fixed top-0 left-0 w-[300px] h-screen bg-slate-700 p-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-transform duration-300 ease-in-out transform ${
         isOpen ? "translate-x-0" : "-translate-x-[250px]"
       }`}
     >
       <span
-        className={`fixed top-3  p-2 bg-slate-800 rounded-xl hover:bg-slate-600 hover:cursor-pointer transition-all duration-300 ease-in-out ${
+        className={`fixed top-3 p-2 bg-slate-800 rounded-xl hover:bg-slate-600 hover:cursor-pointer transition-all duration-300 ease-in-out ${
           !isOpen ? "-right-5" : "right-3"
         }`}
         onClick={toggleOpen}
@@ -27,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleOpen }) => {
         )}
       </span>
 
-      <p className="text-4xl text-left font-bold text-white">TaskFlow</p>
+      <p className="text-4xl text-left font-bold text-white">SpendWise</p>
 
       <SidebarMenu
         className="mt-20"

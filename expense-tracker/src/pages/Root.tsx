@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 
@@ -11,12 +10,14 @@ const RootLayout: React.FC = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex items-center justify-center">
       <Sidebar
         isOpen={isSidebarOpen}
         toggleOpen={handleToggleSidebar}
       />
-      <button onClick={handleToggleSidebar}>Toggle Sidebar</button>
+      <div className="ml-[50px] p-6">
+        <Outlet />
+      </div>
     </div>
   );
 };
