@@ -10,12 +10,13 @@ const RootLayout: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    // <div className="flex items-center justify-center">
+    <div>
       <Sidebar
         isOpen={isSidebarOpen}
         toggleOpen={handleToggleSidebar}
       />
-      <div className="ml-[50px] p-6">
+      <div className="ml-[50px] pt-6 pl-6 pr-6 pb-6 bg-slate-700 h-screen">
         <Outlet />
       </div>
     </div>

@@ -3,6 +3,7 @@ import RootLayout from "./pages/Root";
 
 import "./App.css";
 import HomePage from "./pages/HomePage";
+import NewExpense from "./pages/NewExpense";
 
 const router = createBrowserRouter([
   {
@@ -39,11 +40,11 @@ const router = createBrowserRouter([
       //         },
       //       ],
       //     },
-      //     {
-      //       path: "new",
-      //       element: <NewAlbumPage />,
-      //       action: albumFormAction,
-      //     },
+      {
+        path: "add-expense",
+        element: <NewExpense />,
+        // action: albumFormAction,
+      },
       //   ],
       // },
       // {

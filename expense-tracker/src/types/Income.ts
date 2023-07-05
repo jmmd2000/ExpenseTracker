@@ -1,4 +1,4 @@
-class Expense {
+class Income {
   category: string;
   details: string;
   gross: number;
@@ -41,4 +41,4 @@ class Expense {
   }
 }
 
-export default Expense;
+export default Income;
