@@ -9,7 +9,7 @@ class Expense {
   location: string;
   platform: string;
   userID: string;
-
+  expenseID: string;
   constructor(
     category: string,
     details: string,
@@ -20,7 +20,8 @@ class Expense {
     date: string,
     location: string,
     platform: string,
-    userID: string
+    userID: string,
+    expenseID: string
   ) {
     this.category = category;
     this.details = details;
@@ -32,6 +33,7 @@ class Expense {
     this.location = location;
     this.platform = platform;
     this.userID = userID;
+    this.expenseID = expenseID;
   }
 }
 

@@ -101,3 +101,23 @@ export const getIncomes = async (
   });
   return incomes;
 };
+
+export const deleteExpense = async (expense: Expense) => {
+  const expensesRef = collection(db, "expenses");
+  const q = query(expensesRef, where("expenseID", "==", expense.expenseID));
+  const querySnapshot = await getDocs(q).then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      deleteDoc(doc.ref);
+    });
+  });
+};
+
+export const deleteIncome = async (income: Income) => {
+  const incomeRef = collection(db, "income");
+  const q = query(incomeRef, where("incomeID", "==", income.incomeID));
+  const querySnapshot = await getDocs(q).then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      deleteDoc(doc.ref);
+    });
+  });
+};

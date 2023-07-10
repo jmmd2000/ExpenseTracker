@@ -10,6 +10,7 @@ import Expense from "../../types/Expense";
 import Transaction from "../../types/Transaction";
 import { randomTailwindColors } from "../../functions/randomTailwindColors";
 import Income from "../../types/Income";
+import ErrorCard from "../ErrorCard";
 
 interface PieChartProps {
   transactions: Transaction[];
@@ -55,9 +56,7 @@ const PieChartComponent: React.FC<PieChartProps> = ({
     ];
   } else if (displayMode === "categories") {
     const expenseCategories = filteredTransactions
-      .filter(
-        (transaction): transaction is Expense => "category" in transaction
-      )
+      .filter((transaction): transaction is Expense => "amount" in transaction)
       .map((transaction) => (transaction as Expense).category);
 
     const uniqueCategories = Array.from(new Set(expenseCategories));
@@ -82,36 +81,52 @@ const PieChartComponent: React.FC<PieChartProps> = ({
       : randomTailwindColors();
 
   return (
-    <div className="bg-slate-900 pt-6 pr-6 pb-1 pl-3 w-full rounded-lg h-max">
-      <h1 className="text-white text-xl font-semibold text-center">{title}</h1>
-      <ResponsiveContainer
-        width="100%"
-        height={372}
-      >
-        <PieChart>
-          <Pie
-            data={data}
-            dataKey="value"
-            nameKey="name"
-            cx="50%"
-            cy="50%"
-            outerRadius={150}
-            fill="#8884d8"
-            label
-            stroke="#fff"
-            strokeWidth={1}
+    <div
+      // className={`bg-gray-900 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30
+      // w-full h-max ${
+      className={`bg-slate-900  w-full rounded-lg h-max ${
+        transactions.length == 0
+          ? "h-[428px] p-6 flex items-center justify-center"
+          : "h-max pt-6 pr-6 pb-1 pl-3"
+      }`}
+    >
+      {transactions.length == 0 ? (
+        <ErrorCard message={"No data within given range."} />
+      ) : (
+        <>
+          <h1 className="text-white text-xl font-semibold text-center">
+            {title}
+          </h1>
+          <ResponsiveContainer
+            width="100%"
+            height={372}
           >
-            {data.map((_entry, index) => (
-              <Cell
-                key={index}
-                fill={colors[index % colors.length]}
-              />
-            ))}
-          </Pie>
-          <Tooltip />
-          <Legend />
-        </PieChart>
-      </ResponsiveContainer>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={150}
+                fill="#8884d8"
+                label
+                stroke="#fff"
+                strokeWidth={1}
+              >
+                {data.map((_entry, index) => (
+                  <Cell
+                    key={index}
+                    fill={colors[index % colors.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              {/* <Legend /> */}
+            </PieChart>
+          </ResponsiveContainer>
+        </>
+      )}
     </div>
   );
 };

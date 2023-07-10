@@ -11,6 +11,7 @@ class Income {
   from: string;
   platform: string;
   userID: string;
+  incomeID: string;
 
   constructor(
     category: string,
@@ -24,7 +25,8 @@ class Income {
     date: string,
     from: string,
     platform: string,
-    userID: string
+    userID: string,
+    incomeID: string
   ) {
     this.category = category;
     this.details = details;
@@ -38,6 +40,7 @@ class Income {
     this.from = from;
     this.platform = platform;
     this.userID = userID;
+    this.incomeID = incomeID;
   }
 }
 
